@@ -12,7 +12,7 @@ from blog.forms import *
 from blog.models import *
 from django.contrib.auth.views import LoginView,LogoutView
 
-
+app_name ='blog'
 class SignUpView(CreateView):
     form_class = SignUpForm
     success_url = reverse_lazy('login')
