@@ -13,9 +13,10 @@ from blog.models import *
 from django.contrib.auth.views import LoginView,LogoutView
 
 app_name ='blog'
+
 class SignUpView(CreateView):
     form_class = SignUpForm
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('blog:login')
     template_name = 'registration/signup.html'
 
     def form_valid(self, form):
@@ -44,25 +45,25 @@ class PostCreateView(LoginRequiredMixin,CreateView):
     model =Post
     form_class = PostForm
     template_name = 'blog/post_form.html'
-    success_url = reverse_lazy('blog:list')
+    success_url = reverse_lazy('blog:post_list')
 
 class PostUpdateView(LoginRequiredMixin,UpdateView):
     model = Post
     form_class = PostForm
     template_name = 'blog/post_form.html'
-    success_url = reverse_lazy('blog:list')
+    success_url = reverse_lazy('blog:post_list')
 
 
 class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/post_detail.html'
-    success_url = reverse_lazy('inventory:inventory_list')
+    success_url = reverse_lazy('blog:post_list')
 
 
 class PostDeleteView(LoginRequiredMixin,DeleteView):
     model = Post
     template_name = 'blog/post_delete.html'
-    success_url = reverse_lazy('blog:list')
+    success_url = reverse_lazy('blog:post_list')
 
 def base(request):
     return render(request, 'blog/base.html')
