@@ -37,8 +37,8 @@ class LogoutView(LogoutView):
 class PostListView(ListView):
     model = Post
     template_name = 'blog/post_list.html'  # Your template name
-    context_object_name = 'posts'
-    ordering = ['-created_at']  # Optional: To order by created date
+    # context_object_name = 'post'
+    # ordering = ['-created_at']  # Optional: To order by created date
 
 class PostCreateView(LoginRequiredMixin,CreateView):
     model =Post
